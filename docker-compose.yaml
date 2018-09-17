@@ -1,0 +1,37 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 8080:80
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nignx.conf"
+      - "./nginx/conf.d:/etc/nginx/conf.d"
+      - "./src:/web/laravel"
+    links:
+      - php-fpm
+    container_name : "nginx"
+  php-fpm:
+    build: ./php
+    image: php_swoole
+    expose:
+      - 9000
+    volumes:
+      - "./php:/usr/local/etc"
+      - "./src:/web/laravel"
+    links:
+      - mysqld
+    container_name : "php"
+  mysqld:
+    image: mysql/mysql-server
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - "./mysql/my.cnf:/etc/my.cnf"
+      - "./mysql/my.cnf.d:/etc/my.cnf.d"
+      - "./mysql/data:/var/lib/mysql"
+    container_name : "mysql8"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
