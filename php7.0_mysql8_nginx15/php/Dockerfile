@@ -1,4 +1,4 @@
-FROM php:7.2.9-fpm
+FROM php:7.0-fpm
 ADD https://github.com/swoole/swoole-src/archive/master.tar.gz /build/swoole.tar.gz
 RUN echo "deb http://mirrors.cloud.aliyuncs.com/debian stable main contrib non-free" > /etc/apt/sources.list && \
     echo "deb http://mirrors.cloud.aliyuncs.com/debian stable-proposed-updates main contrib non-free" >> /etc/apt/sources.list && \

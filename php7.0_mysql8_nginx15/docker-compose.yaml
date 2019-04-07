@@ -12,7 +12,7 @@ services:
       - php-fpm
     container_name : "nginx"
   php-fpm:
-    build: ./php
+    build: php
     image: php_swoole
     expose:
       - 9000
