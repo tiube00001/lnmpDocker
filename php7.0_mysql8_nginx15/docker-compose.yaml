@@ -3,35 +3,39 @@ services:
   nginx:
     image: nginx
     ports:
-      - 8080:80
+      - 18080:80
     volumes:
-      - "./nginx/nginx.conf:/etc/nginx/nignx.conf"
-      - "./nginx/conf.d:/etc/nginx/conf.d"
-      - "./src:/web/laravel"
+      - "./nginx15/nginx.conf:/etc/nginx/nignx.conf"
+      - "./nginx15/conf.d:/etc/nginx/conf.d"
+      - "./src:/web"
     links:
       - php-fpm
-    container_name : "nginx"
+    container_name : "nginx15"
   php-fpm:
-    build: php
-    image: php_swoole
+    build: ./php70-fpm/
+    image: php70-fpm:0.1
     expose:
       - 9000
     volumes:
-      - "./php:/usr/local/etc"
-      - "./src:/web/laravel"
+      - "./php70-fpm/etc:/usr/local/etc"
+      - "./src:/web"
+      - "C:/ws/Composer:/usr/share/composer"
+      - "C:/ws/Composer/cache:/usr/share/composer/cache"
+    environment:
+      COMPOSER_HOME: /usr/share/composer
+      COMPOSER_CACHE_DIR: /usr/share/composer/cache
     links:
       - mysqld
-    container_name : "php"
+    container_name : "php70-fpm"
   mysqld:
-    image: mysql/mysql-server
+    image: mysql
     ports:
-      - 3306:3306
+      - 13306:3306
     expose:
       - 3306
     volumes:
-      - "./mysql/my.cnf:/etc/my.cnf"
-      - "./mysql/my.cnf.d:/etc/my.cnf.d"
-      - "./mysql/data:/var/lib/mysql"
+      - "./mysql8/config/mysql:/etc/mysql"
+      - "./mysql8/data/mysql:/var/lib/mysql"
     container_name : "mysql8"
     environment:
       MYSQL_ROOT_PASSWORD: 123456
