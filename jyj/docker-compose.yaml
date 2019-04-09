@@ -11,6 +11,7 @@ services:
     links:
       - php-fpm
     container_name : "jyj-nginx"
+    restart: always
   php-fpm:
     build: ./php70-fpm/
     image: php70-fpm:0.1
@@ -25,3 +26,4 @@ services:
       COMPOSER_HOME: /usr/share/composer
       COMPOSER_CACHE_DIR: /usr/share/composer/cache
     container_name : "jyj-fpm"
+    restart: always
