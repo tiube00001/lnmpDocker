@@ -1,0 +1,29 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 18080:80
+    volumes:
+      - "./nginx15/nginx.conf:/etc/nginx/nignx.conf"
+      - "./nginx15/conf.d:/etc/nginx/conf.d"
+      - "C:/ws/web:/web"
+    links:
+      - php-fpm
+    container_name : "nginx15"
+  php-fpm:
+    build: ./php70-fpm/
+    image: php70-fpm:0.1
+    expose:
+      - 9000
+    volumes:
+      - "./php70-fpm/etc:/usr/local/etc"
+      - "C:/ws/web:/web"
+      - "C:/ws/Composer:/usr/share/composer"
+      - "C:/ws/Composer/cache:/usr/share/composer/cache"
+    environment:
+      COMPOSER_HOME: /usr/share/composer
+      COMPOSER_CACHE_DIR: /usr/share/composer/cache
+    links:
+      - mysqld
+    container_name : "jyj-fpm"
