@@ -3,7 +3,6 @@ services:
   php-fpm:
     build: ./php70-fpm/
     image: php70-fpm:0.1
-    restart: always
     expose:
       - 9000
     volumes:
@@ -17,14 +16,13 @@ services:
     container_name: "jyj-fpm"
   nginx:
     image: nginx
-    restart: always
-    privileged: true
     ports:
       - 18081:80
     links:
       - php-fpm
     volumes:
-      - ./nginx15/conf.d:/etc/nginx/conf.d:rw
+      - ./nginx15/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx15/conf.d:/etc/nginx/conf.d
       - c:/ws/web:/web
     container_name: "jyj-nginx"
 
