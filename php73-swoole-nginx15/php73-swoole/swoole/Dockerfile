@@ -8,6 +8,7 @@ RUN echo deb http://mirrors.aliyun.com/debian stretch main contrib non-free > /e
     echo deb-src http://mirrors.aliyun.com/debian stretch-updates main contrib non-free >> /etc/apt/sources.list && \
     echo deb http://mirrors.aliyun.com/debian-security/ stretch/updates main non-free contrib >> /etc/apt/sources.list && \
     echo deb-src http://mirrors.aliyun.com/debian-security/ stretch/updates main non-free contrib >> /etc/apt/sources.list && \
+    rm -rf /etc/apt/sources.list.d/* && \
     apt-get update && \
     apt-get install -y libssl-dev && \
     apt-get install -y libnghttp2-dev && \
