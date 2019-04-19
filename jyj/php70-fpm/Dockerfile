@@ -22,6 +22,7 @@ RUN chmod +x /usr/local/bin/composer && \
     apt-get install -y zlib1g-dev && \
     docker-php-ext-install pdo_mysql && \
     docker-php-ext-install zip && \
+    docker-php-ext-install bcmath && \
     cd /usr/share && \
     pecl install mongodb-1.5.3.tgz && \
     echo extension=mongodb.so > /usr/local/etc/php/conf.d/mongodb.ini && \
