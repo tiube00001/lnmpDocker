@@ -2,7 +2,7 @@ FROM php:7.0-fpm
 ADD ./composer.phar /usr/local/bin/composer
 ADD ./mongodb-1.5.3.tgz /usr/share/mongodb-1.5.3.tgz
 RUN chmod +x /usr/local/bin/composer && \
-     echo deb http://mirrors.aliyun.com/debian stretch main contrib non-free > /etc/apt/sources.list && \
+    echo deb http://mirrors.aliyun.com/debian stretch main contrib non-free > /etc/apt/sources.list && \
     echo deb http://mirrors.aliyun.com/debian stretch-proposed-updates main contrib non-free >> /etc/apt/sources.list && \
     echo deb http://mirrors.aliyun.com/debian stretch-updates main contrib non-free >> /etc/apt/sources.list && \
     echo deb-src http://mirrors.aliyun.com/debian stretch main contrib non-free >> /etc/apt/sources.list && \
