@@ -14,10 +14,12 @@ RUN chmod +x /usr/local/bin/composer && \
     apt-get update && \
     apt install libpng-dev -y && \
     apt-get install -y zlib1g-dev && \
+    apt-get install -y --no-install-recommends libfreetype6-dev && \
     docker-php-ext-install pdo_mysql && \
     docker-php-ext-install zip && \
     docker-php-ext-install bcmath && \
-    docker-php-ext-install gd && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ && \
+    docker-php-ext-install -j$(nproc) gd && \
     cd /usr/share && \
     pecl install /usr/share/mongodb-1.5.3.tgz && \
     echo extension=mongodb.so > /usr/local/etc/php/conf.d/mongodb.ini && \
