@@ -26,3 +26,6 @@ services:
       - c:/ws/web:/web
     container_name: "jyj-nginx"
 
+    depends_on:
+      - php-fpm
+
