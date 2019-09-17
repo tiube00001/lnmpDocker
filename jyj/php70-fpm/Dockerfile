@@ -26,5 +26,5 @@ RUN chmod +x /usr/local/bin/composer && \
     cd / && \
     cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && \
     mkdir -p /usr/share/composer/cache && \
-    composer config -g repo.packagist composer https://packagist.laravel-china.org && \
+    composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ && \
     rm -rf /usr/share/mongodb-1.5.3.tgz

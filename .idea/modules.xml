@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/lnmpDocker.iml" filepath="$PROJECT_DIR$/.idea/lnmpDocker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lnmpDocker.iml" filepath="$PROJECT_DIR$/.idea/lnmpDocker.iml" />
     </modules>
   </component>
 </project>
